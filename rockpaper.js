@@ -20,7 +20,7 @@ function getComputerChoice() {
 
 
 }
-console.log(getComputerChoice())
+
 
 
 
@@ -47,7 +47,7 @@ function singleRound(playerSelection, computerSelection) {
 
   else if (playerSelection != 'Rock' && playerSelection != 'Paper' && playerSelection != 'Scissor') {
 
-    return (false)
+    return console.log(result = 'Invalid Choice. Pick again')
   }
   else { return result = 'You lose' }
 
@@ -61,6 +61,7 @@ function game() {
   //for loop to run the singleRound() 5 times
   for (let i = 0; i < 5; i++) {
     singleRound()
+    console.log('singleRound result:', result)
     //result variable is the value we get everytime we invoke singleRound()
     //   if conditions where the number count goes up depending on win or lose 
     if (result == 'You lose') {
@@ -71,22 +72,30 @@ function game() {
     }
     else if (result == 'Ends up in draw') {
       console.log(drawMatch++)
-    }}
-  
-    // if conditions that declare winner of the round after checking the total wins and losses
-    if (playerWin > computerWin ) {
-    console.log('Congratulations! You won the match')
+
     }
-    else if (playerWin < computerWin) {
-      console.log('You lost. Better luck next time :(')
-    }
+    //look at else. it counteracts the increment if the result isnt win lose or draw so the round is stuck until we put the right input
+
     else {
+      i--
+
+    }
+  }
+
+  // if conditions that declare winner of the round after checking the total wins and losses
+  if (playerWin > computerWin) {
+    console.log('Congratulations! You won the match')
+  }
+  else if (playerWin < computerWin) {
+    console.log('You lost. Better luck next time :(')
+  }
+  else if (playerWin = computerWin) {
     console.log('The match is tied(')
 
   }
+  else { game() }
 
-  }
+}
 
 game()
-
 
